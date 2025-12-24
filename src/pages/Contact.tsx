@@ -79,6 +79,19 @@ export default function Contact() {
                 {content.person.linkedIn}
               </a>
             </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-moss">
+                {content.labels.github}
+              </p>
+              <a
+                className="text-base font-semibold text-ink hover:text-moss"
+                href={content.person.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content.person.github}
+              </a>
+            </div>
           </div>
         </div>
         <div className="rounded-2xl border border-ink/10 bg-white/70 p-6 shadow-soft">
@@ -93,6 +106,9 @@ export default function Contact() {
             <div className="flex flex-wrap gap-3">
               <Button variant="ghost" href={content.person.linkedIn}>
                 {content.labels.linkedIn}
+              </Button>
+              <Button variant="ghost" href={content.person.github}>
+                {content.labels.github}
               </Button>
               <Button variant="secondary" to="/resume">
                 {content.labels.downloadResume}

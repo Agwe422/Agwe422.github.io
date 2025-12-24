@@ -18,6 +18,7 @@ export type Person = {
   phone: string;
   location: string;
   linkedIn: string;
+  github: string;
 };
 
 export type ProjectLink = {
@@ -30,6 +31,7 @@ export type Project = {
   slug: string;
   dates: string;
   type: string;
+  discipline: string;
   stack: string[];
   bullets: string[];
   links: ProjectLink[];
@@ -80,6 +82,7 @@ export type Labels = {
   email: string;
   phone: string;
   location: string;
+  github: string;
   highlights: string;
   techStack: string;
   links: string;
@@ -95,6 +98,15 @@ export type Labels = {
   notFoundMessage: string;
   backHome: string;
   coursework: string;
+  disciplines: string;
+  filters: string;
+  searchTags: string;
+  searchTagsPlaceholder: string;
+  clearFilters: string;
+  selectedTags: string;
+  noProjects: string;
+  experienceTimeline: string;
+  onThisPage: string;
   skipToContent: string;
   viewDetailsFor: string;
   primaryNav: string;
@@ -102,7 +114,8 @@ export type Labels = {
 
 export type SiteContent = {
   person: Person;
-  heroSubtitle: string;
+  heroTagline: string;
+  aboutText: string;
   nav: NavItem[];
   pageTitles: PageTitles;
   labels: Labels;

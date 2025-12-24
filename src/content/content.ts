@@ -7,17 +7,15 @@ export const content: SiteContent = {
     email: "Jhall61@calpoly.edu",
     phone: "(669) 261-1868",
     location: "San Jose, CA 95117",
-    linkedIn: "https://www.linkedin.com/in/joshwhall408/"
+    linkedIn: "https://www.linkedin.com/in/joshwhall408/",
+    github: "https://github.com/agwe422"
   },
-  heroSubtitle:
-    "Software Engineer.",
+  heroTagline: "Software Engineer.",
+  aboutText:
+    "Software Engineering student at Cal Poly (BS Software Engineering, Sept 2022-Jun 2026). Interested in full-stack development, mobile, AR, and game development.",
   nav: [
     { label: "Home", to: "/" },
     { label: "Projects", to: "/projects" },
-    { label: "Experience", to: "/experience" },
-    { label: "Skills", to: "/skills" },
-    { label: "Education", to: "/education" },
-    { label: "Leadership", to: "/leadership" },
     { label: "Contact", to: "/contact" },
     { label: "Resume", to: "/resume" }
   ],
@@ -39,6 +37,7 @@ export const content: SiteContent = {
     email: "Email",
     phone: "Phone",
     location: "Location",
+    github: "GitHub",
     highlights: "Highlights",
     techStack: "Tech Stack",
     links: "Links",
@@ -54,6 +53,15 @@ export const content: SiteContent = {
     notFoundMessage: "Page not found.",
     backHome: "Back to Home",
     coursework: "Relevant Coursework",
+    disciplines: "Disciplines",
+    filters: "Filter by tags",
+    searchTags: "Search tags",
+    searchTagsPlaceholder: "Search tags",
+    clearFilters: "Clear filters",
+    selectedTags: "Selected tags",
+    noProjects: "No projects match the selected tags.",
+    experienceTimeline: "Experience Timeline",
+    onThisPage: "On this page",
     skipToContent: "Skip to content",
     viewDetailsFor: "View details for",
     primaryNav: "Primary navigation"
@@ -64,6 +72,11 @@ export const content: SiteContent = {
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/joshwhall408/",
+      variant: "ghost"
+    },
+    {
+      label: "Contact",
+      to: "/contact",
       variant: "ghost"
     }
   ],
@@ -76,6 +89,7 @@ export const content: SiteContent = {
       ),
       dates: "June 2025 - Sept 2025",
       type: "Research / AR Prototype",
+      discipline: "AR / HCI",
       stack: ["C#", "Unity", "Microsoft HoloLens 2", "Bluetooth", "OBD-II"],
       bullets: [
         "Connected a Bluetooth OBD-II meter to a phone and transmitted live vehicle telemetry data to a custom Unity application.",
@@ -88,6 +102,7 @@ export const content: SiteContent = {
       slug: slugify("SQL Database Potion Project"),
       dates: "March 2025 - June 2025",
       type: "Backend / Database Systems",
+      discipline: "Databases",
       stack: [
         "Python",
         "FastAPI",
@@ -110,6 +125,7 @@ export const content: SiteContent = {
       slug: slugify("Spotify Playlist Manager"),
       dates: "March 2025 - June 2025",
       type: "Front-End SPA",
+      discipline: "Web Development",
       stack: [
         "TypeScript",
         "Vite",
@@ -132,6 +148,7 @@ export const content: SiteContent = {
       slug: slugify("Mobile Application in Android Studio"),
       dates: "January 2025 - March 2025",
       type: "Mobile App",
+      discipline: "Mobile Development",
       stack: [
         "Kotlin",
         "Android Studio",
@@ -154,6 +171,7 @@ export const content: SiteContent = {
       slug: slugify("2D Puzzle Platformer Unity Game (Lumen)"),
       dates: "January 2025 - March 2025",
       type: "Game Development",
+      discipline: "Game Development",
       stack: ["Unity", "C#", "Tilemap"],
       bullets: [
         "Used the Unity game engine in a group of 5 to create a 2D puzzle platformer.",
@@ -172,6 +190,7 @@ export const content: SiteContent = {
       slug: slugify("Inventory Management Web Application"),
       dates: "Sept 2023 - June 2024",
       type: "Full-Stack Web App",
+      discipline: "Web Development",
       stack: [
         "TypeScript",
         "React",

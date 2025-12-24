@@ -57,6 +57,14 @@ export default function Layout() {
               >
                 {content.labels.linkedIn}
               </a>
+              <a
+                className="hover:text-ink"
+                href={content.person.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content.labels.github}
+              </a>
             </div>
           </div>
           <div className="space-y-2">
