@@ -10,7 +10,7 @@ export const content: SiteContent = {
     linkedIn: "https://www.linkedin.com/in/joshwhall408/"
   },
   heroSubtitle:
-    "Software Engineering student at Cal Poly (BS Software Engineering, Sept 2022-Jun 2026). Interested in full-stack development, mobile, AR, and game development.",
+    "Software Engineer.",
   nav: [
     { label: "Home", to: "/" },
     { label: "Projects", to: "/projects" },
