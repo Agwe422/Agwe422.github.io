@@ -65,6 +65,14 @@ export default function Layout() {
               >
                 {content.labels.github}
               </a>
+              <a
+                className="hover:text-ink"
+                href={content.person.itchIo}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content.labels.itchIo}
+              </a>
             </div>
           </div>
           <div className="space-y-2">

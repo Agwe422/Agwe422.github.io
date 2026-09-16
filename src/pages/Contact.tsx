@@ -92,6 +92,19 @@ export default function Contact() {
                 {content.person.github}
               </a>
             </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-moss">
+                {content.labels.itchIo}
+              </p>
+              <a
+                className="text-base font-semibold text-ink hover:text-moss"
+                href={content.person.itchIo}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content.person.itchIo}
+              </a>
+            </div>
           </div>
         </div>
         <div className="rounded-2xl border border-ink/10 bg-white/70 p-6 shadow-soft">
@@ -109,6 +122,9 @@ export default function Contact() {
               </Button>
               <Button variant="ghost" href={content.person.github}>
                 {content.labels.github}
+              </Button>
+              <Button variant="ghost" href={content.person.itchIo}>
+                {content.labels.itchIo}
               </Button>
               <Button variant="secondary" to="/resume">
                 {content.labels.downloadResume}

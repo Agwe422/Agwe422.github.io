@@ -8,7 +8,7 @@ import SectionHeading from "../components/SectionHeading";
 import { content } from "../content/content";
 import { usePageTitle } from "../hooks/usePageTitle";
 import { formatDateRange } from "../utils/formatDateRange";
-import { sortProjectsByEndDate } from "../utils/projects";
+import { sortByEndDate, sortProjectsByEndDate } from "../utils/projects";
 import { slugify } from "../utils/slugify";
 
 const tagButtonBase =
@@ -77,11 +77,27 @@ export default function Projects() {
     [disciplines, filteredProjects]
   );
 
-  const skillsGroups = [
-    content.skills.languages,
-    content.skills.frameworksTech,
-    content.skills.toolsPlatforms
-  ];
+  const skillsGroups = content.skills;
+
+  const timelineItems = useMemo(() => {
+    const experienceItems = content.experience.map((entry) => ({
+      key: `experience-${entry.slug}`,
+      dates: entry.dates,
+      title: entry.role,
+      subtitle: `${entry.org} | ${entry.focus}`,
+      tags: entry.stack,
+      to: "/experience"
+    }));
+    const projectItems = projects.map((project) => ({
+      key: `project-${project.slug}`,
+      dates: project.dates,
+      title: project.title,
+      subtitle: project.type,
+      tags: project.stack,
+      to: `/projects/${project.slug}`
+    }));
+    return sortByEndDate([...experienceItems, ...projectItems]);
+  }, [projects]);
 
   const sectionLinks = [
     { id: "projects-disciplines", label: content.labels.disciplines },
@@ -265,23 +281,23 @@ export default function Projects() {
       <section id="projects-timeline" className="space-y-8">
         <SectionHeading title={content.labels.experienceTimeline} />
         <ul className="space-y-8 border-l border-ink/10 pl-6">
-          {projects.map((project) => (
-            <li key={project.slug} className="relative space-y-3">
+          {timelineItems.map((item) => (
+            <li key={item.key} className="relative space-y-3">
               <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full bg-moss" />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-moss">
-                {formatDateRange(project.dates)}
+                {formatDateRange(item.dates)}
               </p>
               <div className="space-y-1">
                 <Link
-                  to={`/projects/${project.slug}`}
+                  to={item.to}
                   className="font-display text-xl font-semibold text-ink hover:text-moss"
                 >
-                  {project.title}
+                  {item.title}
                 </Link>
-                <p className="text-sm text-ink/70">{project.type}</p>
+                <p className="text-sm text-ink/70">{item.subtitle}</p>
               </div>
               <div className="flex flex-wrap gap-2">
-                {project.stack.map((tag) => (
+                {item.tags.map((tag) => (
                   <Chip key={tag}>{tag}</Chip>
                 ))}
               </div>
@@ -292,7 +308,7 @@ export default function Projects() {
 
       <section id="projects-skills" className="space-y-8">
         <SectionHeading title={content.pageTitles.skills} />
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {skillsGroups.map((group) => (
             <div
               key={group.label}

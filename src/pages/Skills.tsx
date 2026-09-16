@@ -7,16 +7,12 @@ import { usePageTitle } from "../hooks/usePageTitle";
 export default function Skills() {
   usePageTitle(content.pageTitles.skills);
 
-  const groups = [
-    content.skills.languages,
-    content.skills.frameworksTech,
-    content.skills.toolsPlatforms
-  ];
+  const groups = content.skills;
 
   return (
     <Container className="space-y-10">
       <SectionHeading title={content.pageTitles.skills} />
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         {groups.map((group) => (
           <div
             key={group.label}

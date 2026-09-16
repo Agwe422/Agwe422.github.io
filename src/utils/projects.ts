@@ -1,5 +1,5 @@
 ﻿import { content } from "../content/content";
-import { Project } from "../content/types";
+import { ExperienceEntry, Project } from "../content/types";
 
 const monthMap: Record<string, number> = {
   jan: 0,
@@ -43,6 +43,9 @@ function parseMonthYear(value: string): number {
 function parseEndDate(range: string): number {
   const parts = range.split("-");
   const end = (parts[1] ?? parts[0]).trim();
+  if (end.toLowerCase() === "present") {
+    return Number.MAX_SAFE_INTEGER;
+  }
   return parseMonthYear(end);
 }
 
@@ -50,8 +53,18 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return content.projects.find((project) => project.slug === slug);
 }
 
-export function sortProjectsByEndDate(projects: Project[]): Project[] {
-  return [...projects].sort(
+export function sortByEndDate<T extends { dates: string }>(items: T[]): T[] {
+  return [...items].sort(
     (a, b) => parseEndDate(b.dates) - parseEndDate(a.dates)
   );
+}
+
+export function sortProjectsByEndDate(projects: Project[]): Project[] {
+  return sortByEndDate(projects);
+}
+
+export function sortExperienceByEndDate(
+  experience: ExperienceEntry[]
+): ExperienceEntry[] {
+  return sortByEndDate(experience);
 }

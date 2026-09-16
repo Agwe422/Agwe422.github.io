@@ -1,15 +1,21 @@
 ﻿import Button from "../components/Button";
+import Chip from "../components/Chip";
 import Container from "../components/Container";
 import ProjectCard from "../components/ProjectCard";
 import SectionHeading from "../components/SectionHeading";
 import { content } from "../content/content";
 import { usePageTitle } from "../hooks/usePageTitle";
-import { sortProjectsByEndDate } from "../utils/projects";
+import { formatDateRange } from "../utils/formatDateRange";
+import {
+  sortExperienceByEndDate,
+  sortProjectsByEndDate
+} from "../utils/projects";
 
 export default function Home() {
   usePageTitle(content.pageTitles.home);
 
   const featured = sortProjectsByEndDate(content.projects).slice(0, 3);
+  const experience = sortExperienceByEndDate(content.experience);
   const education = content.education;
 
   return (
@@ -76,6 +82,50 @@ export default function Home() {
           title={content.labels.about}
           subtitle={<p>{content.aboutText}</p>}
         />
+      </section>
+
+      <section className="space-y-8">
+        <SectionHeading title={content.pageTitles.experience} />
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {experience.map((entry) => (
+            <article
+              key={entry.slug}
+              className="flex h-full flex-col justify-between rounded-2xl border border-ink/10 bg-white/75 p-6 shadow-soft"
+            >
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-moss">
+                    {formatDateRange(entry.dates)}
+                  </p>
+                  <h3 className="font-display text-xl font-semibold text-ink">
+                    {entry.role}
+                  </h3>
+                  <p className="text-sm font-semibold text-ink/80">
+                    {entry.org}
+                  </p>
+                </div>
+                <ul className="space-y-2 text-sm text-ink/80">
+                  {entry.bullets.slice(0, 2).map((bullet) => (
+                    <li key={bullet} className="flex gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-moss/70" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {entry.stack.map((tag) => (
+                  <Chip key={tag}>{tag}</Chip>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div>
+          <Button variant="ghost" to="/experience">
+            {content.labels.viewAllExperience}
+          </Button>
+        </div>
       </section>
 
       <section className="space-y-8">

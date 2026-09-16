@@ -19,6 +19,7 @@ export type Person = {
   location: string;
   linkedIn: string;
   github: string;
+  itchIo: string;
 };
 
 export type ProjectLink = {
@@ -37,6 +38,18 @@ export type Project = {
   links: ProjectLink[];
 };
 
+export type ExperienceEntry = {
+  role: string;
+  org: string;
+  slug: string;
+  location: string;
+  dates: string;
+  focus: string;
+  stack: string[];
+  bullets: string[];
+  links: ProjectLink[];
+};
+
 export type Education = {
   school: string;
   location: string;
@@ -50,12 +63,6 @@ export type Education = {
 export type SkillGroup = {
   label: string;
   items: string[];
-};
-
-export type Skills = {
-  languages: SkillGroup;
-  frameworksTech: SkillGroup;
-  toolsPlatforms: SkillGroup;
 };
 
 export type LeadershipEntry = {
@@ -83,6 +90,7 @@ export type Labels = {
   phone: string;
   location: string;
   github: string;
+  itchIo: string;
   highlights: string;
   techStack: string;
   links: string;
@@ -106,6 +114,7 @@ export type Labels = {
   selectedTags: string;
   noProjects: string;
   experienceTimeline: string;
+  viewAllExperience: string;
   onThisPage: string;
   skipToContent: string;
   viewDetailsFor: string;
@@ -120,8 +129,9 @@ export type SiteContent = {
   pageTitles: PageTitles;
   labels: Labels;
   ctas: CtaLink[];
+  experience: ExperienceEntry[];
   projects: Project[];
   education: Education;
-  skills: Skills;
+  skills: SkillGroup[];
   leadership: LeadershipEntry[];
 };
